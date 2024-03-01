@@ -1,0 +1,44 @@
+<div class="container">
+    <div class="row">
+    <h4>Registration Form</h4>
+    </div>
+      <div class="row">
+        <form [formGroup]="RegisterForm" (ngSubmit)="SaveRegister()">
+            <div class="form-floating mb-3">
+                <input type="text" required class="form-control" formControlName="Rid"   id="Rid" name="Rid" placeholder="Rid" readonly>
+                <label for="floatingInput">Rid</label>
+            </div>
+            <div class="form-floating mb-3">
+                <input type="text" required class="form-control" formControlName="UserName" id="UserName" name="UserName" placeholder="User Name" >
+                <label for="floatingInput">Enter UserName</label>
+                <small class="text-danger" *ngIf="UserName?.invalid && UserName?.touched">UserName is required</small>
+            </div>
+            <div class="form-floating mb-3">
+                <input type="password" required class="form-control" formControlName="Password" id="Password" name="Password" placeholder="Password" >
+                <label for="floatingInput">Enter Password</label>
+                <small class="text-danger" *ngIf="Password?.invalid && Password?.touched">Password is required</small>
+            </div>
+            <div class="form-floating mb-3">
+                <input type="text" required class="form-control" formControlName="Email" id="Email" name="Email" placeholder="Email" >
+                <label for="floatingInput">Enter Email</label>
+                <small class="text-danger" *ngIf="Email?.invalid && Email?.touched">Email is required</small>
+            </div>
+            <div class="form-floating mb-3">
+                <input type="text" required class="form-control" formControlName="PhoneNumber" id="PhoneNumber" name="PhoneNumber" placeholder="Phone Number" >
+                <label for="floatingInput">Enter Phone Number</label>
+                <small class="text-danger" *ngIf="PhoneNumber?.invalid && PhoneNumber?.touched">PhoneNumber is required</small>
+            </div>
+           
+            <!-- <div class="form-floating mb-3">
+                <input type="text" required class="form-control" formControlName="RoleId" id="RoleId" name="RoleId" placeholder="RoleId" readonly>
+                <label for="floatingInput">Enter RoleId</label>
+                <small class="text-danger" *ngIf="RoleId?.invalid && RoleId?.touched">RoleId is required</small>
+            </div> -->
+            
+            <div class="form-floating mb-3">
+             <input type="submit"  class="btn btn-primary" value="Register" />&nbsp;
+             <input type="button"  class="btn btn-primary" value="go to Login" [routerLink]="'/Login'"/>
+            </div>
+        </form>
+       </div>
+    </div>

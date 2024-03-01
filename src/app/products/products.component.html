@@ -1,0 +1,122 @@
+<div class="container" >
+    <div class="row">
+    <h4>Product</h4>
+    </div>
+      <div class="row">
+        <form [formGroup]="prodForm" (ngSubmit)="saveProduct()" >
+            <div class="form-floating mb-3" *ngIf="userRoleId==1">
+                <input type="text" readonly class="form-control" formControlName="id"   id="id" name="id" placeholder="Product Id" >
+                <label for="floatingInput">Product Id</label>
+                <small class="text-secondart">this is readonly field</small>
+            </div>
+            <div class="form-floating mb-3" *ngIf="userRoleId==1">
+                <input type="text" required class="form-control" formControlName="name" id="name" name="name" placeholder="Product Name" >
+                <label for="floatingInput">Product Name</label>
+                <small class="text-danger" *ngIf="name?.invalid && name?.touched">Name is required</small>
+            </div>
+            <div class="form-floating mb-3"*ngIf="userRoleId==1">
+                <input type="text" required class="form-control" formControlName="price" id="price" name="price" placeholder="Price" >
+                <label for="floatingInput">Price</label>
+                <small class="text-danger" *ngIf="price?.invalid && price?.touched">Price is required</small>
+            </div>
+            
+            <div class="form-floating mb-3" *ngIf="userRoleId==1">
+             
+                <input type="file"  class="form-control" id="imageUrl" name="imageUrl" placeholder="imageUrl" (change)="saveImage($event)" >
+                <label for="floatingInput">Product Image</label>
+            </div>
+            <div class="form-floating mb-3" *ngIf="userRoleId==1">
+                <select class="form-control" formControlName="cid" placeholder="Category name">
+                    <option [ngValue]="null" disabled selected>Category Name</option>
+                    <option *ngFor="let p of catgList" [ngValue]="p.cid">{{p.cname}}</option>
+                </select>
+            </div>
+            <div class="form-floating mb-3" *ngIf="userRoleId==1">
+                <input type="submit" *ngIf="!isUpdatedBtn" class="btn btn-primary" value="Add" />
+                <input type="submit" *ngIf="isUpdatedBtn" class="btn btn-primary" value="Update" />
+               </div>
+             <br/>
+    
+        <div class="row" *ngIf="userRoleId==1"> 
+           <div class="col-12"> 
+            <table class="table table-bordered"> 
+                <thead> 
+                    <tr> 
+                    <div *ngIf="userRoleId==1">
+                        <th>Id</th> 
+                    </div>
+                        <th>Name</th> 
+                        <th>Price</th>
+                        <th>Imageurl</th>
+                        <th>Cid</th>
+                        <th>Category Name</th>
+                        <div *ngIf="userRoleId==1">
+                        <th>Actions</th> 
+                    </div>
+                    </tr> 
+                </thead> 
+                <tbody> 
+                    <tr *ngFor="let p of prodList">
+                        <div *ngIf="userRoleId==1"> 
+                        <td>{{p.id}}</td> 
+                        </div>
+                        <td>{{p.name}}</td> 
+                        <td>{{p.price}}</td>
+                        <td>
+                            <img [src]="p.imageUrl" alt="{{ p.name }}" width="50" height="50">
+                          </td>
+                        <td>{{p.cid}}</td>
+                        <td>{{p.cname}}</td>
+                       <div *ngIf="userRoleId==1">
+                        <td> 
+                            <input type="button" class="btn btn-primary" value="Edit" (click)="edit(p)"/> 
+                            <input type="button" class="btn btn-danger" value="Delete" (click)="delete(p.id)"/> 
+                        </td> 
+                    </div>
+                    </tr> 
+                </tbody> 
+            </table> 
+        </div> 
+    </div> 
+    
+
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Product List</title>
+        <link rel="stylesheet" href="products.component.css">
+    </head>
+    <body>
+        <div class="container" *ngIf="userRoleId==2">
+            <div class="row">
+                <div *ngFor="let p of prodList" class="col-4 product-card">
+                    <div class="product-image">
+                        <img [src]="p.imageUrl" alt="{{ p.name }}">
+                    </div>
+                    <div class="product-details">
+                        <h3>{{p.name}}</h3>
+                        <p class="price">{{p.price}}</p>
+                    </div>
+                    <div class="product-action">
+                        <button class="add-to-cart" (click)="addToCart(p.id)">Add to Cart</button> <br><br>
+                        <button class="Buy-Now" (click)="BuyNow(p.id)">Buy Now</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+    </html>
+    
+    
+    
+    
+    
+    
+     
+       
+
+    
+
+

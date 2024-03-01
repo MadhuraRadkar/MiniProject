@@ -1,0 +1,17 @@
+
+<div class="container" *ngIf="roleid==2"> 
+    <div class="row"> 
+        <ng-container *ngFor="let o of OrderList"> 
+            <div class="card col-md-3"> 
+                <img src="{{o.imageUrl}}" alt="{{ o.name }}" width="100" height="100"><br> 
+                <h5>{{o.name}}</h5><br> 
+                <p>{{o.price}}</p><br> 
+                <!-- <button class="Buy-Now" (click)="BuyNow(o.id)">Buy Now</button><br> -->
+                <!-- <button class="Remove from cart" (click)="Delete(b.id)">Remove from cart</button> -->
+            </div> 
+        </ng-container> 
+ 
+    </div> 
+ 
+</div>
+

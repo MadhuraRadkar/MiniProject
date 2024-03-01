@@ -1,0 +1,26 @@
+<div class="container">
+    <div class="row">
+    <h4>Login Form</h4>
+    </div>
+      <div class="row">
+        <form [formGroup]="LoginForm" (ngSubmit)="SaveLogin()">
+            <div class="form-floating mb-3">
+                <input type="text" required class="form-control" formControlName="Email" id="Email" name="Email" placeholder="Email" >
+                <label for="floatingInput">Enter Email</label>
+                <small class="text-danger" *ngIf="Email?.invalid && Email?.touched">Email is required</small>
+            </div>
+            <div class="form-floating mb-3">
+                <input type="password" required class="form-control" formControlName="Password" id="Password" name="Password" placeholder="Password" >
+                <label for="floatingInput">Enter Password</label>
+                <small class="text-danger" *ngIf="Password?.invalid && Password?.touched">Password is required</small>
+            </div>
+            <div class="form-floating mb-3">
+             <input type="submit" [disabled]="LoginForm.invalid" class="btn btn-primary" value="Login" />&nbsp;
+            </div>
+        </form>
+       </div>
+    </div>
+
+
+  
+

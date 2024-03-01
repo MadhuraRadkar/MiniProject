@@ -1,0 +1,56 @@
+.navbar-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  background-color: #333;
+  color: #fff;
+}
+
+.nav {
+  list-style: none;
+  display: flex;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-item {
+  margin-right: 10px;
+}
+
+.nav-link {
+  text-decoration: none;
+  color: #fff;
+  padding: 10px;
+  border-radius: 5px;
+  transition: background-color 0.3s;
+}
+
+.nav-link:hover {
+  background-color: #555;
+}
+
+.logout {
+  background-color: #e74c3c; /* Red color for logout */
+}
+
+.home {
+  background-color: #3498db; /* Blue color for home */
+}
+
+.cart {
+  background-color: hotpink; /* Green color for cart */
+}
+
+.orders {
+  background-color: #f39c12; 
+
+}
+.products {
+  background-color: #8e44ad; /* Purple color for product */
+}
+/* Adjustments for flexible menu items */
+.nav {
+  flex-grow: 1;
+  justify-content: flex-start;
+}
